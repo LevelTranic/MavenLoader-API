@@ -33,9 +33,9 @@ val javadocJar by tasks.registering(Jar::class) {
 
 dependencies {
     implementation("org.apache.maven:maven-resolver-provider:3.9.9")
-    compileOnly("org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22")
-    compileOnly("org.apache.maven.resolver:maven-resolver-transport-http:1.9.22")
-    compileOnly("org.jetbrains:annotations:24.0.0")
+    implementation("org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22")
+    implementation("org.apache.maven.resolver:maven-resolver-transport-http:1.9.22")
+    implementation("org.jetbrains:annotations:24.0.0")
 }
 
 publishing {
