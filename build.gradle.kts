@@ -8,16 +8,10 @@ plugins {
 }
 
 group = "one.tranic"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     maven("https://maven-central-asia.storage-download.googleapis.com/maven2/")
-    maven("https://oss.sonatype.org/content/groups/public/") {
-        name = "sonatype"
-    }
-    maven("https://jitpack.io") {
-        name = "jitpack"
-    }
 }
 
 
