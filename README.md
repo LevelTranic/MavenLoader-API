@@ -15,7 +15,6 @@ repositories {
 
 dependencies {
     compileOnly 'one.tranic:maven-loader-api:1.0.0'
-    // Optional, if you need to use the second method below
     compileOnly 'org.apache.maven:maven-resolver-provider:3.9.9'
     compileOnly 'org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22'
     compileOnly 'org.apache.maven.resolver:maven-resolver-transport-http:1.9.22'
@@ -33,7 +32,6 @@ repositories {
 
 dependencies {
     compileOnly("one.tranic:maven-loader-api:1.0.0")
-    // Optional, if you need to use the second method below
     compileOnly("org.apache.maven:maven-resolver-provider:3.9.9")
     compileOnly("org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22")
     compileOnly("org.apache.maven.resolver:maven-resolver-transport-http:1.9.22")
