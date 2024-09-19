@@ -14,10 +14,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'one.tranic:maven-loader-api:1.0.0'
-    compileOnly 'org.apache.maven:maven-resolver-provider:3.9.9'
-    compileOnly 'org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22'
-    compileOnly 'org.apache.maven.resolver:maven-resolver-transport-http:1.9.22'
+    compileOnly 'one.tranic:maven-loader-api:1.0.1'
 }
 
 ```
@@ -31,10 +28,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("one.tranic:maven-loader-api:1.0.0")
-    compileOnly("org.apache.maven:maven-resolver-provider:3.9.9")
-    compileOnly("org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22")
-    compileOnly("org.apache.maven.resolver:maven-resolver-transport-http:1.9.22")
+    compileOnly("one.tranic:maven-loader-api:1.0.1")
 }
 ```
 
@@ -51,25 +45,7 @@ dependencies {
         <dependency>
             <groupId>one.tranic</groupId>
             <artifactId>maven-loader-api</artifactId>
-            <version>1.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-resolver-provider</artifactId>
-            <version>3.9.9</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.resolver</groupId>
-            <artifactId>maven-resolver-connector-basic</artifactId>
-            <version>1.9.22</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.resolver</groupId>
-            <artifactId>maven-resolver-transport-http</artifactId>
-            <version>1.9.22</version>
+            <version>1.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

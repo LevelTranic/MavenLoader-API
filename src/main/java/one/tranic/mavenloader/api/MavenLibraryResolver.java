@@ -43,6 +43,19 @@ import java.util.List;
 public class MavenLibraryResolver {
 
     private static final Logger logger = LoggerFactory.getLogger("MavenLibraryResolver");
+    private static boolean enabled;
+
+    static {
+        try {
+            Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+            method.setAccessible(true);
+            enabled = true;
+        } catch (Exception e) {
+            enabled = false;
+            logger.error("--add-opens=java.base/java.net=ALL-UNNAMED is not enabled.", e);
+        }
+    }
+
     private final RepositorySystem system;
     private final DefaultRepositorySystemSession session;
     private final List<RemoteRepository> repositories;
@@ -147,6 +160,7 @@ public class MavenLibraryResolver {
      */
     private void loadJar(File jarFile) throws Exception {
         if (!jarFile.exists()) throw new FileNotFoundException();
+        if (!enabled) return;
         URL jarUrl = jarFile.toURI().toURL();
 
         ClassLoader pluginClassLoader = this.getClass().getClassLoader();
