@@ -2,6 +2,8 @@
 
 We have already added the central repository and sonatype by default, no need to add them further.
 
+Example in: [MavenLoader-Example](https://github.com/LevelTranic/MavenLoader-Example)
+
 ## Import Dependencies
 
 ### Gradle Groovy
