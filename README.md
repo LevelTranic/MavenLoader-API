@@ -80,6 +80,22 @@ class MavenLoader {
 }
 ```
 
+### In resources (new)
+MavenLoader `1.2-SNAPSHOT` introduced a new loading mechanism.
+
+Now you don't need to choose the method in `In loader`. 
+You only need to create a `maven.yml` in `src/main/resources`, 
+like this
+
+```yaml
+repository:
+  - https://jitpack.io
+dependency:
+  - org.jooq:jooq:3.17.7
+  - com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4
+  # Simple-YAML should not be added, as MavenLoaderAPI already includes that dependency since 1.2-SNAPSHOT.
+```
+
 ### In loader
 #### Java
 ```java
