@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'one.tranic:maven-loader-api:1.0.1'
+    compileOnly 'one.tranic:maven-loader-api:1.0.2'
 }
 
 ```
@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("one.tranic:maven-loader-api:1.0.1")
+    compileOnly("one.tranic:maven-loader-api:1.0.2")
 }
 ```
 
@@ -47,7 +47,7 @@ dependencies {
         <dependency>
             <groupId>one.tranic</groupId>
             <artifactId>maven-loader-api</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
