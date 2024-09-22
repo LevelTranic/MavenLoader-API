@@ -36,7 +36,7 @@ public class Boost {
             String p = mirrors.get(s);
             if (p != null) {
                 maven = p;
-                logger.info("The mirror {} ({}) has been selected", s, p);
+                logger.info("The mirror " + s + " (" + p + ") has been selected");
                 return;
             }
         }
@@ -66,7 +66,7 @@ public class Boost {
      * Checks if a given URL string belongs to the central Maven repository.
      *
      * <pre>{@code
-     * boolean b = Boost.isCentral("https://repo.maven.apache.org/maven2);
+     * boolean b = Boost.isCentral("https://repo.maven.apache.org/maven2");
      * }</pre>
      *
      * @param str the repository URL to check
@@ -156,12 +156,12 @@ public class Boost {
                     bestMirror = result.url;
                 }
             } catch (TimeoutException | InterruptedException | ExecutionException e) {
-                logger.warn("Error testing mirror: {}", e.getMessage());
+                logger.warn("Error testing mirror: " + e.getMessage());
             }
         }
 
         maven = bestMirror;
-        logger.info("The fastest mirror is selected: {} ({} ms)", bestMirror, bestTime);
+        logger.info("The fastest mirror is selected: " + bestMirror + " (" + bestTime + " ms)");
 
         executor.shutdown();
     }
@@ -185,13 +185,13 @@ public class Boost {
             int responseCode = connection.getResponseCode();
             if (responseCode == 200 || responseCode == 404 || responseCode == 302 || responseCode == 301) {
                 long time = System.currentTimeMillis() - start;
-                logger.info("Mirror {} responded in {} ms", name, time);
+                logger.info("Mirror " + name + " responded in " + time + " ms");
                 return new MirrorResult(url, time);
             } else {
-                logger.warn("Mirror {} failed with response code: {}", name, responseCode);
+                logger.warn("Mirror " + name + " failed with response code: " + responseCode);
             }
         } catch (IOException e) {
-            logger.warn("Mirror {} failed to connect: {}", name, e.getMessage());
+            logger.warn("Mirror " + name + " failed to connect: " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.disconnect();

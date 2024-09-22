@@ -170,7 +170,7 @@ public class MavenLibraryResolver {
 
         if (pluginClassLoader instanceof URLClassLoader) {
             method.invoke(pluginClassLoader, jarUrl);
-            logger.info("Loaded JAR into plugin classloader: {}", jarFile.getAbsolutePath());
+            logger.info("Loaded JAR into plugin classloader: " + jarFile.getAbsolutePath());
         } else {
             logger.error("ClassLoader is not an instance of URLClassLoader");
         }
@@ -206,7 +206,7 @@ public class MavenLibraryResolver {
         session.setTransferListener(new AbstractTransferListener() {
             @Override
             public void transferInitiated(@NotNull TransferEvent event) {
-                logger.info("Downloading {}", event.getResource().getRepositoryUrl() + event.getResource().getResourceName());
+                logger.info("Downloading " + event.getResource().getRepositoryUrl() + event.getResource().getResourceName());
             }
         });
         session.setReadOnly();
