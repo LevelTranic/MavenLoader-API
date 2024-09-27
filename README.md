@@ -148,3 +148,6 @@ You need to exclude all dependencies below to prevent shadow from packaging them
 - org.apache.maven:maven-resolver-provider
 - org.apache.maven.resolver:maven-resolver-connector-basic
 - org.apache.maven.resolver:maven-resolver-transport-http
+
+## Links
+- [Javadoc](https://javadoc.tranic.one/maven-loader)
