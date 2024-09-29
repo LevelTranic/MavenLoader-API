@@ -31,15 +31,6 @@ public class Boost {
 
     public static void ping() {
         mirrors();
-        String s = System.getProperty("Maven.select");
-        if (s != null) {
-            String p = mirrors.get(s);
-            if (p != null) {
-                maven = p;
-                logger.info("The mirror " + s + " (" + p + ") has been selected");
-                return;
-            }
-        }
         selectMirror();
     }
 
@@ -51,15 +42,6 @@ public class Boost {
         mirrors.put("google-asia", "https://maven-central-asia.storage-download.googleapis.com/maven2/");
         mirrors.put("google-eu", "https://maven-central-eu.storage-download.googleapis.com/maven2/");
         mirrors.put("google-us", "https://maven-central.storage-download.googleapis.com/maven2/");
-        String r = System.getProperty("Maven.central");
-        if (r != null && !r.isEmpty()) {
-            try {
-                new URI(r);
-            } catch (Exception e) {
-                return;
-            }
-            mirrors.put("user-custom-mirror", r);
-        }
     }
 
     /**

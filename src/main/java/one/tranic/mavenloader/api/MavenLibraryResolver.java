@@ -44,6 +44,7 @@ public class MavenLibraryResolver {
 
     private static final Logger logger = LoggerFactory.getLogger("MavenLibraryResolver");
     private static boolean enabled;
+    private static Method isWhitelistRepo;
 
     static {
         try {
@@ -53,6 +54,16 @@ public class MavenLibraryResolver {
         } catch (Exception e) {
             enabled = false;
             logger.error("--add-opens=java.base/java.net=ALL-UNNAMED is not enabled.", e);
+        }
+
+        try {
+            Class<?> configClass = Class.forName("one.tranic.mavenLoader.Config");
+
+            isWhitelistRepo = configClass.getMethod("isWhitelistRepo", String.class);
+
+            isWhitelistRepo.invoke(null, "https://repo.maven.apache.org/maven2"); // test
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -75,11 +86,30 @@ public class MavenLibraryResolver {
     }
 
     /**
+     * Check whether the repository is on the white list
+     *
+     * @param name the complete URL address of the repository
+     * @return when the whitelist is not enabled, it will always be true.
+     */
+    private boolean isWhitelistRepo(String name) {
+        if (isWhitelistRepo == null) return false;
+        try {
+            return (boolean) isWhitelistRepo.invoke(null, "https://repo.maven.apache.org/maven2");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
      * Adds a custom remote repository to the list of repositories for dependency resolution.
      *
      * @param repository the remote repository to be added, not be {@code null}.
      */
     public void addRepository(@NotNull RemoteRepository repository) {
+        if (!isWhitelistRepo(repository.getUrl())) {
+            logger.warn("The far end repository " + repository.getUrl() + " is not on the white list and has refused to visit.");
+            return;
+        }
         repositories.add(Boost.get(repository));
     }
 
@@ -90,6 +120,10 @@ public class MavenLibraryResolver {
      * @param name       the identifier of the repository, not be {@code null}.
      */
     public void addRepository(@NotNull String repository, @NotNull String name) {
+        if (!isWhitelistRepo(repository)) {
+            logger.warn("The far end repository " + repository + " is not on the white list and has refused to visit.");
+            return;
+        }
         repositories.add(Boost.get(new RemoteRepository.Builder(name, "default", repository).build()));
     }
 
@@ -101,6 +135,10 @@ public class MavenLibraryResolver {
      * @param name       the identifier of the repository, not be {@code null}.
      */
     public void addRepository(@NotNull String repository, @NotNull String type, @NotNull String name) {
+        if (!isWhitelistRepo(repository)) {
+            logger.warn("The far end repository " + repository + " is not on the white list and has refused to visit.");
+            return;
+        }
         repositories.add(Boost.get(new RemoteRepository.Builder(name, type, repository).build()));
     }
 
