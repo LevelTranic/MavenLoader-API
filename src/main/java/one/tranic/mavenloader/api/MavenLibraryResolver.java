@@ -57,7 +57,7 @@ public class MavenLibraryResolver {
         }
 
         try {
-            Class<?> configClass = Class.forName("one.tranic.mavenLoader.Config");
+            Class<?> configClass = Class.forName("one.tranic.mavenloader.Config");
             isWhitelistRepo = configClass.getMethod("isWhitelistRepo", String.class);
             isWhitelistRepo.invoke(null, "https://repo.maven.apache.org/maven2"); // test
         } catch (Exception e) {
