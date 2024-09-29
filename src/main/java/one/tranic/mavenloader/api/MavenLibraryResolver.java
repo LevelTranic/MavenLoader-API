@@ -94,7 +94,7 @@ public class MavenLibraryResolver {
     private boolean isWhitelistRepo(String name) {
         if (isWhitelistRepo == null) return false;
         try {
-            return (boolean) isWhitelistRepo.invoke(null, "https://repo.maven.apache.org/maven2");
+            return (boolean) isWhitelistRepo.invoke(null, name);
         } catch (Exception e) {
             return false;
         }
