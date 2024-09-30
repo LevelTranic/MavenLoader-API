@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://javadoc.tranic.one/maven-loader/schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "repository": {
+      "description": "repository list",
+      "type": "array",
+      "pattern": "^(?!org\\.bukkit\\.)([a-zA-Z_$][a-zA-Z\\d_$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*$",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "dependency": {
+      "description": "dependency list",
+      "type": "array",
+      "items": {
+        "pattern": "([^: ]+):([^: ]+)(:([^: ]*)(:([^: ]+))?)?:([^: ]+)",
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "dependency"
+  ],
+  "title": "JSON schema for MavenLoaderAPI YAML",
+  "type": "object"
+}
