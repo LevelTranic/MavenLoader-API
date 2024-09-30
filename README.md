@@ -5,6 +5,7 @@ We have already added the central repository and sonatype by default, no need to
 Example in: [MavenLoader-Example](https://github.com/LevelTranic/MavenLoader-Example)
 
 ## Import Dependencies
+**No longer recommend this method, please see [Usage](#Usage).**
 
 ### Gradle Groovy
 ```groovy
@@ -54,8 +55,9 @@ dependencies {
 ```
 
 ## Usage
-### Velocity Main Class
-#### Java
+
+### Set hard dependence
+#### Velocity (Java)
 ```java
 @Plugin(
     id = "my-plugin", 
@@ -68,7 +70,7 @@ public class MyPlugin {
 }
 ```
 
-#### Kotlin
+#### Velocity (Kotlin)
 ```kotlin
 @Plugin(
     id = "my-plugin",
@@ -79,6 +81,21 @@ public class MyPlugin {
 class MavenLoader {
 }
 ```
+
+#### Spigot
+`plugin.yml`
+```yaml
+name: ExamplePlugin
+version: '1.0-SNAPSHOT'
+main: com.example.Main
+api-version: '1.18'
+load: STARTUP
+authors: [ "Me" ]
+folia-supported: true
+depend:
+  - MavenLoader
+```
+
 
 ### In resources (new)
 MavenLoader `1.2-SNAPSHOT` introduced a new loading mechanism.
