@@ -12,6 +12,15 @@ version = "1.0.3.1"
 
 repositories {
     maven("https://maven-central-asia.storage-download.googleapis.com/maven2/")
+    maven("https://repo.papermc.io/repository/maven-public/") {
+        name = "papermc-repo"
+    }
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") {
+        name = "spigotmc-repo"
+    }
+    maven("https://oss.sonatype.org/content/groups/public/") {
+        name = "sonatype"
+    }
 }
 
 
@@ -39,10 +48,11 @@ configurations.api {
 }
 
 dependencies {
-    api("org.apache.maven:maven-resolver-provider:3.9.9")
-    api("org.apache.maven.resolver:maven-resolver-connector-basic:1.9.22")
-    api("org.apache.maven.resolver:maven-resolver-transport-http:1.9.22")
     api("org.jetbrains:annotations:24.0.0")
+
+    api("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+    api("net.md-5:bungeecord-api:1.18-R0.1-SNAPSHOT")
+    api("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
 }
 
 publishing {
